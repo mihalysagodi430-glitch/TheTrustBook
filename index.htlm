@@ -1,0 +1,177 @@
+<img src="IMG_20250825_142407_937.png" alt="IMG_20250825_142407_937.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheTrustBook</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 1.5rem;
+      background: #121212;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header img {
+      height: 60px;
+    }
+    h1 {
+      margin: 1rem 0;
+      font-size: 1.8rem;
+      color: #00ffc6;
+    }
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+    .card-front {
+      background: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .card-front h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc6;
+    }
+    .card-front p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    .card-back {
+      background: #111;
+      color: #fff;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .price {
+      font-size: 1.3rem;
+      margin: 1rem 0;
+      color: #ff6b6b;
+    }
+    .buy-btn {
+      background: #00ffc6;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      font-weight: bold;
+      color: #111;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .buy-btn:hover {
+      background: #00e6b0;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="thetrustbook-logo.png" alt="TheTrustBook Logo">
+    <h1>TheTrustBook – Master the Algorithm, Inspire the Crowd</h1>
+  </header>
+
+  <section class="catalog">
+    <!-- Mastery Edition -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Mastery Edition</h2>
+          <p>“Dominate Instagram like a pro!”</p>
+        </div>
+        <div class="card-back">
+          <p>Advanced strategies for professionals who want to master Instagram growth.</p>
+          <div class="price">17.99 €</div>
+          <a class="buy-btn" href="https://www.paypal.me/ThaTrust/17.99" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Viral Edition -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Viral Edition</h2>
+          <p>“Catch the trend wave before it crashes.”</p>
+        </div>
+        <div class="card-back">
+          <p>Learn how to leverage viral sounds, reels, and hashtags to grow fast.</p>
+          <div class="price">12.99 €</div>
+          <a class="buy-btn" href="https://www.paypal.me/ThaTrust/12.99" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth Edition -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Growth Edition</h2>
+          <p>“Turn followers into a thriving community.”</p>
+        </div>
+        <div class="card-back">
+          <p>From analytics to engagement hacks – build your tribe on Instagram.</p>
+          <div class="price">15.99 €</div>
+          <a class="buy-btn" href="https://www.paypal.me/ThaTrust/15.99" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Starter Edition -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Starter Edition</h2>
+          <p>“Get 10k Followers Fast with Us.”</p>
+        </div>
+        <div class="card-back">
+          <p>The perfect entry point: reach your first 10k followers quickly and smartly.</p>
+          <div class="price">9.99 €</div>
+          <a class="buy-btn" href="https://www.paypal.me/ThaTrust/9.99" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
