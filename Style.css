@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  background: #111;
+  padding: 20px;
+}
+
+.logo {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #00e0ff;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #111, #222);
+}
+
+button {
+  background: #00e0ff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.plan {
+  background: #1a1a1a;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.plan.popular {
+  border: 2px solid #00e0ff;
+}
