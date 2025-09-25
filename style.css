@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  text-align: center;
+  background-color: #111;
+  color: white;
+}
+
+header {
+  padding: 20px;
+  background: #000;
+}
+
+.logo {
+  width: 60px;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 50px;
+  background: linear-gradient(135deg, #6c63ff, #3c3b6e);
+  border-radius: 20px;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #6c63ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5146d9;
+}
+
+.features {
+  padding: 30px;
+}
+
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 30px;
+}
+
+.plan {
+  background: #222;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+footer {
+  padding: 10px;
+  background: #000;
+}

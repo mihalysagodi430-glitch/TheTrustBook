@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ebook Maker - TheTrustBook</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="TheTrustBook logo" class="logo">
+    <h1>Ebook Maker</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="ebook-maker.html">Ebook Maker</a>
+    </nav>
+  </header>
+
+  <section class="maker">
+    <h2>Generate Your Ebook</h2>
+    <form id="ebook-form">
+      <label for="topic">Topic:</label>
+      <input type="text" id="topic" name="topic" required>
+      
+      <label for="length">Length (pages):</label>
+      <input type="number" id="length" name="length" min="1" max="200" required>
+      
+      <button type="submit">Generate Ebook</button>
+    </form>
+
+    <div id="result"></div>
+  </section>
+
+  <footer>
+    <p>© 2025 TheTrustBook</p>
+  </footer>
+</body>
+</html>
