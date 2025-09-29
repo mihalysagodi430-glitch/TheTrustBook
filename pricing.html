@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - TheTrustBook</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Pricing Plans</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="ebook-maker.html">Ebook Maker</a>
+    </nav>
+  </header>
+
+  <section class="plans">
+    <div class="plan">
+      <h3>Felfedező</h3>
+      <p>Try for free</p>
+      <strong>0 EUR</strong>
+      <p>1 AI chapter / 10 days</p>
+      <button disabled>Free</button>
+    </div>
+
+    <div class="plan">
+      <h3>Író</h3>
+      <p>Best for creators</p>
+      <strong>9.99 EUR / month</strong>
+      <div id="paypal-writer"></div>
+    </div>
+
+    <div class="plan">
+      <h3>Kiadó</h3>
+      <p>For publishers</p>
+      <strong>24.99 EUR / month</strong>
+      <div id="paypal-pro"></div>
+    </div>
+
+    <div class="plan">
+      <h3>Stúdió</h3>
+      <p>Enterprise solution</p>
+      <strong>Custom</strong>
+      <button onclick="alert('Contact us for pricing')">Contact Us</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 TheTrustBook</p>
+  </footer>
+</body>
+</html>
