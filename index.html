@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheTrustBook - AI Ebook Generator & Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="TheTrustBook Logo" class="logo-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDVWMzVIMzBWMTVIMjBWNUgxMFpNMjAgMTVWMzVIMzBWMjBIMjBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNSAxMEgyNVYxNUgxNVYxMFoiIGZpbGw9IiNlNzRjM2MiLz4KPC9zdmc+'">
+                    <span class="logo-text">TheTrustBook</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#home" class="nav-active">Home</a></li>
+                        <li><a href="#generator">Ebook Generator</a></li>
+                        <li><a href="#marketplace">Marketplace</a></li>
+                        <li><a href="#groups">Groups</a></li>
+                        <li><a href="#subscription">Pricing</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn-login" id="loginBtn">Login</button>
+                    <button class="btn-register" id="registerBtn">Register</button>
+                    <div class="user-menu hidden" id="userMenu">
+                        <div class="user-info">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iMTUiIGZpbGw9IiMzNDk4ZGIiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik03IDdDNyA1LjM0MzEgOC4zNDMxNSA0IDEwIDRDMTEuNjU2OSA0IDEzIDUuMzQzMTUgMTMgN0MxMyA4LjY1Njg1IDExLjY1NjkgMTAgMTAgMTBDOC4zNDMxNSAxMCA3IDguNjU2ODUgNyA3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTQgMTRDNC4wMDAwMSAxMS44Mzg3IDQuNzM0NDcgOS43NDUxMyA2LjA3MDU2IDguMDcwNTVDNy40MDY2NSA2LjM5NTk3IDkuMjU4NDggNS4yNDU1OSAxMS4zNDY5IDQuODI3ODRDMTMuNDM1MyA0LjQxMDA5IDE1LjYyOTUgNC43NTA5NyAxNy40OTI5IDUuODAzOTVDMTkuMzU2MyA2Ljg1Njk0IDIwLjc3MjggOC41NTQ1OSAyMS40OTU2IDEwLjYxNDVDMjIuMjE4NCAxMi42NzQ0IDIyLjIxODQgMTQuOTU0OCAyMS40OTU2IDE3LjAxNDdDMjAuNzcyOCAxOS4wNzQ3IDE5LjM1NjMgMjAuNzcyMiAxNy40OTI5IDIxLjgyNTJDMTUuNjI5NSAyMi44NzgxIDEzLjQzNTMgMjMuMjE5IDExLjM0NjkgMjIuODAxMkM5LjI1ODQ4IDIyLjM4MzQgNy40MDY2NSAyMS4yMzMgNi4wNzA1NiAxOS41NTg0QzQuNzM0NDcgMTcuODgzOSA0LjAwMDAxIDE1Ljc5MDMgNCAxMy42MjlWMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+" alt="Avatar" class="user-avatar">
+                            <span id="userName">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="#my-ebooks"><i class="fas fa-book"></i> My Ebooks</a>
+                            <a href="#my-groups"><i class="fas fa-users"></i> My Groups</a>
+                            <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#generator">Ebook Generator</a></li>
+            <li><a href="#marketplace">Marketplace</a></li>
+            <li><a href="#groups">Groups</a></li>
+            <li><a href="#subscription">Pricing</a></li>
+            <li class="mobile-auth">
+                <button class="btn-login" id="mobileLoginBtn">Login</button>
+                <button class="btn-register" id="mobileRegisterBtn">Register</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Create, Share & Sell AI-Powered Ebooks</h1>
+                <p>Join TheTrustBook community - Generate professional ebooks with AI, collaborate in groups, and monetize your content in our marketplace.</p>
+                <div class="hero-buttons">
+                    <button class="cta-button" id="startGenerating">Start Creating</button>
+                    <button class="cta-button secondary" id="exploreMarketplace">Explore Marketplace</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="totalEbooks">12,458</span>
+                        <span class="stat-label">Ebooks Created</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="activeGroups">1,247</span>
+                        <span class="stat-label">Active Groups</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalUsers">8,742</span>
+                        <span class="stat-label">Community Members</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ebook Generator Section -->
+    <section id="generator" class="generator">
+        <div class="container">
+            <h2>AI Ebook Generator</h2>
+            <p class="section-subtitle">Create professional ebooks with advanced AI and multiple design options</p>
+            
+            <div class="generator-interface">
+                <div class="generator-sidebar">
+                    <div class="form-group">
+                        <label for="ebookTitle">Ebook Title</label>
+                        <input type="text" id="ebookTitle" placeholder="Enter your ebook title">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ebookTopic">Main Topic</label>
+                        <input type="text" id="ebookTopic" placeholder="What is your ebook about?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ebookLanguage">Language</label>
+                        <select id="ebookLanguage">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ru">Russian</option>
+                            <option value="zh">Chinese</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ar">Arabic</option>
+                            <option value="hi">Hindi</option>
+                            <option value="hu">Hungarian</option>
+                            <!-- További nyelvek... -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ebookLength">Length</label>
+                        <select id="ebookLength">
+                            <option value="short">Short (10-20 pages)</option>
+                            <option value="medium">Medium (20-40 pages)</option>
+                            <option value="long">Long (40+ pages)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ebookStyle">Writing Style</label>
+                        <select id="ebookStyle">
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual</option>
+                            <option value="academic">Academic</option>
+                            <option value="creative">Creative</option>
+                            <option value="storytelling">Storytelling</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ebookTemplate">Design Template</label>
+                        <select id="ebookTemplate">
+                            <option value="modern">Modern Business</option>
+                            <option value="minimal">Minimalist</option>
+                            <option value="creative">Creative Arts</option>
+                            <option value="academic">Academic Paper</option>
+                            <option value="storybook">Story Book</option>
+                            <option value="tech">Technology</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="includeSlides">Include Presentation Slides</label>
+                        <input type="checkbox" id="includeSlides" checked>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="addWatermark">Add TheTrustBook Watermark</label>
+                        <input type="checkbox" id="addWatermark" checked>
+                    </div>
+                    
+                    <button class="cta-button large full-width" id="generateEbookBtn">
+                        <i class="fas fa-robot"></i> Generate Ebook with AI
+                    </button>
+                </div>
+                
+                <div class="generator-preview">
+                    <div class="preview-header">
+                        <h3>Live Preview</h3>
+                        <div class="preview-actions">
+                            <button class="btn-icon" id="zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <button class="btn-icon" id="zoomIn"><i class="fas fa-search-plus"></i></button>
+                            <button class="btn-icon" id="fullscreen"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="preview-content" id="previewContent">
+                        <div class="ebook-placeholder">
+                            <div class="placeholder-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <p>Your AI-generated ebook will appear here</p>
+                            <small>Configure settings on the left and click generate</small>
+                        </div>
+                    </div>
+                    <div class="preview-footer">
+                        <button class="cta-button" id="saveEbook" disabled><i class="fas fa-save"></i> Save Ebook</button>
+                        <button class="cta-button secondary" id="publishEbook" disabled><i class="fas fa-share"></i> Publish to Marketplace</button>
+                        <button class="cta-button secondary" id="exportEbook" disabled><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design Features Showcase -->
+            <div class="features-showcase">
+                <h3>Advanced Design Features</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Multiple Templates</h4>
+                        <p>Choose from various professional designs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Slide Effects</h4>
+                        <p>Include presentation-ready slides</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h4>Multi-language</h4>
+                        <p>Support for all major languages</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🖼️</div>
+                        <h4>Image Integration</h4>
+                        <p>Add and customize images easily</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="marketplace">
+        <div class="container">
+            <h2>Ebook Marketplace</h2>
+            <p class="section-subtitle">Discover, buy and sell ebooks from our community</p>
+            
+            <div class="marketplace-controls">
+                <div class="marketplace-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="business">Business</button>
+                    <button class="filter-btn" data-filter="fiction">Fiction</button>
+                    <button class="filter-btn" data-filter="education">Education</button>
+                    <button class="filter-btn" data-filter="technology">Technology</button>
+                </div>
+                <div class="marketplace-search">
+                    <input type="text" placeholder="Search ebooks..." id="marketplaceSearch">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="marketplace-content">
+                <div class="ebooks-grid" id="ebooksGrid">
+                    <!-- Ebooks will be loaded here -->
+                </div>
+                
+                <div class="marketplace-sidebar">
+                    <div class="sidebar-card">
+                        <h4>Sell Your Ebooks</h4>
+                        <p>Publish your AI-generated ebooks and start earning</p>
+                        <button class="cta-button small" id="sellEbookBtn">Sell Now</button>
+                    </div>
+                    
+                    <div class="sidebar-card">
+                        <h4>Live Chat</h4>
+                        <div class="chat-mini">
+                            <div class="chat-messages-mini" id="chatMessagesMini">
+                                <div class="message">Hi! I'm interested in your ebook</div>
+                                <div class="message response">Great! What would you like to know?</div>
+                            </div>
+                            <div class="chat-input-mini">
+                                <input type="text" placeholder="Type a message..." id="chatInputMini">
+                                <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Groups Section -->
+    <section id="groups" class="groups">
+        <div class="container">
+            <h2>Collaborative Groups</h2>
+            <p class="section-subtitle">Join groups, collaborate on ebooks, and chat with community members</p>
+            
+            <div class="groups-header">
+                <div class="groups-info">
+                    <p><i class="fas fa-info-circle"></i> Group features require <strong>Writer</strong> subscription</p>
+                </div>
+                <button class="cta-button" id="createGroupBtn" disabled><i class="fas fa-plus"></i> Create Group</button>
+            </div>
+            
+            <div class="groups-content">
+                <div class="groups-sidebar">
+                    <div class="groups-list" id="groupsList">
+                        <!-- Groups list will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="groups-main">
+                    <div class="group-header" id="groupHeader">
+                        <div class="group-info">
+                            <h3>Select a Group</h3>
+                            <p>Choose a group from the sidebar to start collaborating</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group-content">
+                        <div class="group-ebooks">
+                            <h4>Group Ebooks</h4>
+                            <div class="group-ebooks-grid" id="groupEbooksGrid">
+                                <!-- Group ebooks will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="group-chat">
+                            <h4>Group Chat</h4>
+                            <div class="chat-container-group">
+                                <div class="chat-messages-group" id="chatMessagesGroup">
+                                    <div class="message-info">Group chat is disabled. Please join a Writer group to start chatting.</div>
+                                </div>
+                                <div class="chat-input-group">
+                                    <input type="text" placeholder="Type a message..." id="chatInputGroup" disabled>
+                                    <button class="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section id="subscription" class="subscription">
+        <div class="container">
+            <h2>Choose Your Plan</h2>
+            <p class="section-subtitle">Start for free, upgrade as you grow</p>
+
+            <!-- Special Offer Banner -->
+            <div class="special-offer-banner">
+                <div class="offer-content">
+                    <span class="offer-badge">🚀 LIMITED OFFER</span>
+                    <p>First 500 users get <strong>50% OFF</strong> on Business Guide annual plan! Only <strong>€124.99/year</strong></p>
+                    <small>Next year: €249/year auto-renewal</small>
+                </div>
+            </div>
+
+            <div class="pricing-cards">
+                <!-- FREE PLAN - Explorer -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Explorer</h3>
+                        <div class="price">€0<span>/month</span></div>
+                        <p class="plan-description">Perfect for getting started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 AI-generated chapter/month</li>
+                        <li><i class="fas fa-check"></i> 3 basic templates</li>
+                        <li><i class="fas fa-check"></i> Watermarked export (PDF/EPUB)</li>
+                        <li><i class="fas fa-check"></i> Limited storage (5 books for 14 days)</li>
+                        <li><i class="fas fa-check"></i> Basic image upload (5 images/book)</li>
+                        <li><i class="fas fa-times"></i> No high-resolution export</li>
+                        <li><i class="fas fa-times"></i> No custom fonts</li>
+                        <li><i class="fas fa-times"></i> No group features</li>
+                    </ul>
+                    <button class="cta-button free" data-plan="free" data-price="0" data-period="monthly">
+                        Get Started Free
+                    </button>
+                </div>
+
+                <!-- PREMIUM PLAN - Writer -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Writer</h3>
+                        <div class="price">€9.99<span>/month</span></div>
+                        <div class="annual-price">or €99/year (save €20!)</div>
+                        <p class="plan-description">Perfect for content creators</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Unlimited AI generation</strong></li>
+                        <li><i class="fas fa-check"></i> 20+ premium templates</li>
+                        <li><i class="fas fa-check"></i> Watermarked exports</li>
+                        <li><i class="fas fa-check"></i> Advanced formatting options</li>
+                        <li><i class="fas fa-check"></i> Unlimited image uploads</li>
+                        <li><i class="fas fa-check"></i> Unlimited storage</li>
+                        <li><i class="fas fa-check"></i> 5 high-resolution exports/month</li>
+                        <li><i class="fas fa-check"></i> Custom fonts</li>
+                        <li><i class="fas fa-check"></i> <strong>Group collaboration features</strong></li>
+                    </ul>
+                    <button class="cta-button" data-plan="writer" data-price="9.99" data-period="monthly">
+                        Start Writing
+                    </button>
+                    <button class="cta-button secondary annual" data-plan="writer" data-price="99" data-period="annual">
+                        Save with Annual
+                    </button>
+                </div>
+
+                <!-- PROFESSIONAL PLAN - Business Guide -->
+                <div class="pricing-card professional">
+                    <div class="pricing-header">
+                        <h3>Business Guide</h3>
+                        <div class="price">€24.99<span>/month</span></div>
+                        <div class="annual-price">or €249/year (save €50!)</div>
+                        <div class="limited-offer" id="limitedOffer">
+                            <strong>FIRST 500: €124.99/year!</strong>
+                        </div>
+                        <p class="plan-description">For businesses & publishers</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Everything in Writer</strong></li>
+                        <li><i class="fas fa-check"></i> Unlimited high-resolution exports</li>
+                        <li><i class="fas fa-check"></i> Team collaboration</li>
+                        <li><i class="fas fa-check"></i> AI-powered cover creator</li>
+                        <li><i class="fas fa-check"></i> Brand kit (logo, colors, fonts)</li>
+                        <li><i class="fas fa-check"></i> Early access to new features</li>
+                        <li><i class="fas fa-check"></i> Friend referral program</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <button class="cta-button" data-plan="business" data-price="24.99" data-period="monthly">
+                        Go Professional
+                    </button>
+                    <button class="cta-button secondary annual" data-plan="business" data-price="249" data-period="annual" id="businessAnnualBtn">
+                        Annual Plan - €249/year
+                    </button>
+                </div>
+            </div>
+
+            <!-- Feature Comparison Table -->
+            <div class="feature-comparison">
+                <h3>Detailed Feature Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Explorer</th>
+                            <th>Writer</th>
+                            <th>Business Guide</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI Generation</td>
+                            <td>1 chapter/month</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Templates</td>
+                            <td>3 basic</td>
+                            <td>20+ premium</td>
+                            <td>All templates + new</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td>5 books (14 days)</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Image Upload</td>
+                            <td>5 images/book</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Export Quality</td>
+                            <td>Watermarked</td>
+                            <td>5 HD/month</td>
+                            <td>Unlimited HD</td>
+                        </tr>
+                        <tr>
+                            <td>Group Features</td>
+                            <td>-</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Team Collaboration</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Brand Kit</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="assets/logo.png" alt="TheTrustBook Logo" class="logo-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDVWMzVIMzBWMTVIMjBWNUgxMFpNMjAgMTVWMzVIMzBWMjBIMjBaIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0xNSAxMEgyNVYxNUgxNVYxMFoiIGZpbGw9IiNlNzRjM2MiLz4KPC9zdmc+'">
+                        <span class="logo-text">TheTrustBook</span>
+                    </div>
+                    <p>AI-powered ebook generator and collaborative platform.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> mihalysagodi430@gmail.com</p>
+                        <p><i class="fas fa-clock"></i> <span id="currentTime">Loading...</span></p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#generator">Ebook Generator</a></li>
+                        <li><a href="#marketplace">Marketplace</a></li>
+                        <li><a href="#groups">Groups</a></li>
+                        <li><a href="#subscription">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html" target="_blank">Terms of Service</a></li>
+                        <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#community">Community Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TheTrustBook. All rights reserved. | 10% platform fee on all marketplace sales</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to Your Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    
+                    <button type="submit" class="cta-button full-width">Login</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <button class="text-button" id="switchToRegister">Register</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create an Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Confirm Password</label>
+                        <input type="password" id="registerConfirmPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referralCode">Referral Code (optional)</label>
+                        <input type="text" id="referralCode" placeholder="Enter if you were invited">
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button full-width">Create Account</button>
+                </form>
+                <p class="auth-switch">Already have an account? <button class="text-button" id="switchToLogin">Login</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="groupCreateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Group</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="groupCreateForm">
+                    <div class="form-group">
+                        <label for="groupName">Group Name</label>
+                        <input type="text" id="groupName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupDescription">Description</label>
+                        <textarea id="groupDescription" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupTopic">Main Topic</label>
+                        <input type="text" id="groupTopic" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupPrivacy">Privacy</label>
+                        <select id="groupPrivacy">
+                            <option value="public">Public - Anyone can join</option>
+                            <option value="private">Private - Approval required</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="cta-button full-width">Create Group</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="stripeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complete Your Subscription</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="stripeCheckout">
+                    <p>Redirecting to secure payment...</p>
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
