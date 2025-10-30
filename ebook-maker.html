@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ebook Maker — TheTrustBook</title><link rel="stylesheet" href="styles/style.css"></head>
+<body class="cosmic">
+<header><h1>Ebook Maker</h1></header>
+<main>
+  <form id="ebook-form">
+    <label>Title<input name="title" required></label>
+    <label>Language<select name="lang"><option value="en">English</option><option value="hu">Hungarian</option></select></label>
+    <label>Theme<select name="theme"><option>Social Media Growth</option><option>Productivity</option></select></label>
+    <label>Pages<input name="pages" type="number" min="1" max="200" value="12"></label>
+    <label>Style<select name="style"><option>Galaxy Motion</option><option>Clean</option></select></label>
+    <button type="submit" class="btn primary">Generate Ebook</button>
+  </form>
+
+  <div id="progress" style="display:none;">Generating...</div>
+  <div id="result"></div>
+</main>
+<script>
+document.getElementById('ebook-form').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  document.getElementById('progress').style.display='block';
+  const r = await fetch('/api/generate-ebook',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  const js = await r.json();
+  document.getElementById('progress').style.display='none';
+  if(js.downloadUrl) document.getElementById('result').innerHTML = `<a href="${js.downloadUrl}" target="_blank">Download your ebook</a>`;
+  else document.getElementById('result').textContent = js.note || 'Generation failed';
+});
+</script>
+</body>
+</html>
