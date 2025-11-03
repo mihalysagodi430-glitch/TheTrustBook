@@ -1,0 +1,1 @@
+export default function Cancel(){ return <main className='page'><h1>Payment canceled</h1><p>Your purchase was canceled.</p></main> }
