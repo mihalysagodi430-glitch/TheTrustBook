@@ -1,1 +1,0 @@
-export default function Success(){ return <main className='page'><h1>Payment successful</h1><p>Thank you — your purchase is complete.</p></main> }
