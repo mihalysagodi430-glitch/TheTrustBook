@@ -1,1 +1,0 @@
-export default function handler(req, res){ res.json({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || process.env.STRIPE_PUBLIC_KEY || '' }); }
