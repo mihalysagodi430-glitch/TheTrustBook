@@ -1,1 +1,0 @@
-This build uses client-side WebLLM for free AI generation. For production-grade server AI, integrate OpenAI on server-side and protect API keys.
