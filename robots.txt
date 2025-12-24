@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://the-trust-book.vercel.app/sitemap.xml
